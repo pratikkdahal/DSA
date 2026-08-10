@@ -4,6 +4,12 @@
 #define MAX 300000
 using namespace std;
 
+void swapp(int *p, int *q)
+{
+    int temp = *p;
+    *p = *q;
+    *q = temp;
+}
 void display(int A[],int n){
     int i;
     for(i=0;i<n;i++){
@@ -23,10 +29,10 @@ int partition(int A[],int l, int r){
             y--;
         }
         if (x<y){
-            swap(A[x],A[y]);
+            swapp(&A[x],&A[y]);
         }
     }
-    swap(A[l],A[y]);
+    swapp(&A[l],&A[y]);
     return y;
 }
 void quickSort(int A[],int l,int r)
