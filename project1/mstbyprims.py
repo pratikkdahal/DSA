@@ -1,6 +1,6 @@
 import heapq
 
-def prim(graph, start=0):
+def prims(graph, start=0):
     n=len(graph)
     visited = [False]*n
     mst_edges=[]
@@ -32,21 +32,24 @@ def prim(graph, start=0):
     return mst_edges, total_wt
 
 graph = [
-    [0, 3 ,2, 0, 0],
-    [3, 0, 4, 3, 4],
-    [2, 4, 0, 5, 0],
-    [0, 3, 5, 0, 6],
-    [0, 4, 0, 6, 0]
+    [0, 1, 0, 0, 3],
+    [1, 0, 2, 0, 7],
+    [0, 2, 0, 7, 5],
+    [0, 0, 7, 0, 1],
+    [3, 7, 5, 1, 0]
 ]
+result = prims(graph, 0)
 
-result = prim(graph,0)
-mst = result[0]  #mst edges in mst
-total=result[1]  #total wt in total
+mst = result[0]
 
-print("Edges in Minimum Spanning Tree:")
+total = result[1]
+
+print("---Prims Algorithm---")
+print("Edges in minimum Spanning Tree:")
 
 for u, v, weight in mst:
-    print(u, "-", v, ":", weight)
+
+    print(u,"-", v, ":", weight)
 
 
-print(f"Total weight of MST of given graph is {total}")
+print("\nTotal weight of MST is:", total)
